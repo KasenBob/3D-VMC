@@ -1,0 +1,18 @@
+network:
+  sample_batch_num: 4
+  encoder:
+    dropout: 0.4
+    model: vit_base_patch16_224
+    pretrained: True
+  decoder:
+    dropout: 0.4
+    depth: 8
+    heads: 12
+    dim: 768
+    patch_num: 4
+    voxel_size: 32
+    cnn_layers: 3
+    cnn_hidden_dim: 64
+    resnet_blocks: 2
+  Contrastiveblock: resnet50
+  Contrastivebs: 24

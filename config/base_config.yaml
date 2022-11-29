@@ -1,0 +1,58 @@
+seed: 0
+
+pretrain:
+  base: 'src/model/pretrain_weight/vit_base_p16_224.pth'
+  tiny: 'src/model/pretrain_weight/deit_tiny_patch16_224.pth'
+
+data:
+  dataset:
+    ShapeNet:
+      taxonomy_path: /root/dataset/shapenet/ShapeNet.json
+      image_path: /root/dataset/shapenet/ShapeNetRendering/%s/%s/rendering/%02d.png
+      voxel_path: /root/dataset/shapenet/ShapeNetVox32/%s/%s/model.binvox
+      #taxonomy_path: E:/dataset/ShapeNet/ShapeNet.json
+      #image_path: E:/dataset/ShapeNet/ShapeNetRendering/%s/%s/rendering/%02d.png
+      #voxel_path: E:/dataset/ShapeNet/ShapeNetVox32/%s/%s/model.binvox
+
+  constants:
+    n_views: 1
+    img_w: 224
+    img_h: 224
+    crop_img_w: 128
+    crop_img_h: 128
+    n_vox: 32
+    selection_mode: random
+    bg_mode: random
+    train_augmentation: True
+
+  transforms:
+    mean: [0.5, 0.5, 0.5]
+    std: [0.5, 0.5, 0.5]
+    brightness: 0.4
+    contrast: 0.4
+    saturation: 0.4
+    noise_std: 0.4
+    train_rand_bg_color_range: [[225, 255], [225, 255], [225, 255]]
+    test_rand_bg_color_range: [[225, 255], [225, 255], [225, 255]]
+
+  loader:
+    train_batch_size: 16
+    val_batch_size: 16
+    test_batch_size: 16
+    num_workers: 10
+    repeat_factor: 400
+
+trainer:
+  max_epochs: 30
+  gpus: 2
+  limit_train_batches: 1.0
+  limit_val_batches: 1.0
+  limit_test_batches: 1.0
+  check_val_every_n_epoch: 1
+  precision: 32
+  log_every_n_steps: 1
+  num_sanity_val_steps: 0
+
+optimization:
+    lr: 1e-2
+    warmup_steps: 10000
