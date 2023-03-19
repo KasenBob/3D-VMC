@@ -3,7 +3,7 @@ Code for "3D-VMC: A Single-view 3D Voxel Reconstruction Network based on Modal C
 
 # Train
 
-download the ShapeNet dataset and put it in 
+download the ShapeNet dataset and place it in the path specified in the config\base_config.yaml 
 
 run
 
