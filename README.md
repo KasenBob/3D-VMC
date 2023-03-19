@@ -10,3 +10,10 @@ run
 `
 python train.py
 `
+# Eval
+
+run
+
+`
+python eval.py --ckpt_path='the path you set'
+`
